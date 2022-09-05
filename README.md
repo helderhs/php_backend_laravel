@@ -1,5 +1,5 @@
 # Backend em php com laravel 9
-Backend desenvolvido 
+Backend desenvolvido com laravel 9
 
 ## To run this project
 
