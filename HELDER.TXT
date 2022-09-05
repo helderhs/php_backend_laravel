@@ -1,0 +1,41 @@
+#php  EXPLICAÇÕES AULA. VARIFICAR SUB PAGINAS
+https://candied-gooseberry-205.notion.site/Criando-API-REST-com-Laravel-9-606573f493e9494b9b7abc7ac1298828
+
+
+# COMANDO CRIAR PROJETO. JA CRIA A PASTA
+composer create-project laravel/laravel teste
+
+# COMANDO INICIAR SERVIDOR DESENVOLVEDOR
+php artisan serve
+
+# EXEMPLO MIGRARION
+php artisan make:model Testamento --migration
+-- NO VIDEO MOSTRA CASO NÃO QUEIRA TABELA NO PLURAL
+-- NO VIDEO MOSTRA CASO NÃO QUEIRA NOME TABELA ID
+-- VIDEO CURTO
+php artisan make:migration add_imagem_on_livros --table=livros
+
+############################################## RODAR MIGRATION
+php artisan migrate
+-- CASO DER ERRO NO MIGRATION INICIAIS MUDAR EM CONFIG/DATABASE, EM MYSQL 'engine' => 'InnoDB',
+
+
+# CRIANDO Controllers
+php artisan make:controller TestamentoController --api
+
+# SANCTUM PROVIDER PARA LOGIN TOKENS
+COMANDO: php artisan vendor:publish --provider="Laravel\Sanctum\SanctumServiceProvide"
+-- DESCOMENTAR EM HTTP/KERNEL.PHP EM API O \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
+
+
+# CRIAR RESOUCE
+php artisan make:resource VersiculoResource
+php artisan make:resource VersiculoResource2 --collection
+-- PARA COLOCAR UM NOME EM DATA COLOCAR NO RESOURCE - public static $wrap = 'Testamento';
+-- PARA TIRAR O NOME DE TUDO, E SO DEVOLVER O QUE PEDIU, COLOCAR EM app/proveider/appservices em BOOT colocar - JsonResource::withoutWrapping();
+----para paginate, usar ->paginate() no collection no lugar do get()
+
+
+# UPLOAD IMAGEM
+em config / filesystem ja existe configurado alguns lugares para upload
+-- criar link da pasta public em storage - php artisan storage:link
